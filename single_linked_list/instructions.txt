@@ -1,0 +1,25 @@
+# To Make Docker Image
+	docker build -t gdb .
+
+# To Debug
+	make debug
+	cd /tmp
+	make clean && make
+	gdb ./linked_list_test_main
+	[gdb] l     	***list first 15 lines of file
+	[gdb] l 25  	***list 25 lines of file
+	[gdb] b 22  	***set break point at line 22
+	[gdb] run 	***run program until you hit break point
+	[gdb] step 	***step into / move through code
+	[gdb] print b   ***print contents of variable 
+	[gdb] continue  ***run program all the way through
+	[gdb] quit      ***exit gdb
+
+# Find and Replace vim
+	**Reference: https://www.cyberciti.biz/faq/vim-text-editor-find-and-replace-all-text/
+	- Whole file search and replace:
+		:%s/text_to_replace/replace_with/g
+	- Only current line search and replace
+		:s/text_to_replace/replace_with/g
+
+	
