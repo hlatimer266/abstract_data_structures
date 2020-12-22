@@ -5,49 +5,57 @@
 
 using namespace std;
 
-	stack_arr::stack_arr(int size){
-		data = new int[size];
-		capacity = size;
+	stack_arr::stack_arr(int size_arr){
+		data = new int[size_arr];
+		capacity = size_arr;
 		size = 0;
-		for (int i=0; i<size; i++){data[i] = NULL;}
+		for (int i=0; i<size_arr; i++){
+			data[i] = 0;
+		}
 	}
 
 	stack_arr::~stack_arr(){
-		int *tmp;
-		for(int i; i<size; i++){
-			tmp = data[i];
-			delete(tmp);
+		delete [] data;
+	}
+
+	void stack_arr::_double_capacity(){
+		int *new_arr = new int[capacity*2];
+		for (int i=0; i<size; i++) {
+			new_arr[i] = data[i];
 		}
-		delete(data);
+		delete [] data;
+		data = new_arr;
+		capacity = capacity * 2;
 	}
 
 	void stack_arr::push(int val) {
+		if (size == capacity){
+			_double_capacity();
+		}
 		data[size] = val;
 		size++;
 	}
 
 	void stack_arr::pop() {
-		for(int i; i<size-1; i++){
-			data[i] = data[i+1];
-		}
+		data[size] = 0;
 		size--;
 	}
 
 	void stack_arr::peek() {
-		if (data[0] == NULL) {
+		if (&data[0] == NULL) {
 			cout << "stack is empty" << endl;
 		} else {
-			cout << "Value at top of the stack = " << data[0] << endl;
+			cout << "Value at top of the stack = " << data[size-1] << endl;
 		}
 		
 	}
 
-	void _print_stack(int idx) {
-		if (idx == size-1) {
+	void stack_arr::_print_stack(int idx) {
+		if (idx == -1) {
 			return;
 		} else {
 			cout << data[idx] << " ";
-			_print_stack(idx+1);
+			_print_stack(idx-1);
 		}
 	}
 
@@ -56,6 +64,6 @@ using namespace std;
 		if (size == 0) {
 			cout << "stack is empty" << endl;
 		} else {
-			_print_stack(0);
+			_print_stack(size-1);
 		}
 	}

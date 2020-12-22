@@ -1,12 +1,12 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
-#include "stack_ll.hpp"
+#include "stack_arr.hpp"
 
 using namespace std;
 
 int main() {
-	stack_ll stack;
+	stack_arr stack(5);
 
 	stack.push(5);
 	stack.push(8);
@@ -33,6 +33,16 @@ int main() {
 	cout << "display all values left on the stack" << endl;
 	stack.display_all();
 	cout << "" << endl;
+
+	cout << "trigger doublye of stack size by pushing 5 more values (7,13,14,15,16)" << endl;
+	stack.push(7);
+	stack.push(13);
+	stack.push(14);
+	stack.push(15);
+	stack.push(16);
+	cout << "display contents of stack" << endl;
+	stack.display_all();
+
 
 	return 0;
 }
