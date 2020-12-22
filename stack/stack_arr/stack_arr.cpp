@@ -9,9 +9,7 @@ using namespace std;
 		data = new int[size_arr];
 		capacity = size_arr;
 		size = 0;
-		for (int i=0; i<size_arr; i++){
-			data[i] = 0;
-		}
+		for (int i=0; i<size_arr; i++){data[i] = 0;}
 	}
 
 	stack_arr::~stack_arr(){
@@ -20,9 +18,7 @@ using namespace std;
 
 	void stack_arr::_double_capacity(){
 		int *new_arr = new int[capacity*2];
-		for (int i=0; i<size; i++) {
-			new_arr[i] = data[i];
-		}
+		for (int i=0; i<size; i++) {new_arr[i] = data[i];}
 		delete [] data;
 		data = new_arr;
 		capacity = capacity * 2;
@@ -42,7 +38,7 @@ using namespace std;
 	}
 
 	void stack_arr::peek() {
-		if (&data[0] == NULL) {
+		if (size == 0) {
 			cout << "stack is empty" << endl;
 		} else {
 			cout << "Value at top of the stack = " << data[size-1] << endl;
